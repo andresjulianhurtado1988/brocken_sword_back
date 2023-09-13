@@ -53,34 +53,40 @@ class CharactersController extends Controller
     public function registerCharacter(Request $request)
     {
 
+
+
         // recoger datos por post
         $json = $request->input('json', null);
+
+
+        //     var_dump($json);
+
         $params_array = json_decode($json, true);
 
         // save character
 
-        //   $is_user = $params_array['id_magic_system'];
+        $is_user = $params_array['id_magic_system'];
 
         $magic_user = 0;
 
-        //     if ($is_user > 1) {
-        //         $magic_user = 1;
-        //    }
+        if ($is_user > 1) {
+            $magic_user = 1;
+        }
 
         //`````````magic_user````````````first_apparition```
 
         $character = new Characters();
-        $character->id_land = 1;
-        $character->id_race = 1;
-        $character->id_magic_system = 1;
-        $character->character_name = 'juan';
-        $character->age = 16;
-        $character->description = 'hola mundo';
-        $character->story = 'hola mundo';
-        $character->magic_user = 1;
+        $character->id_land = $params_array['id_land'];
+        $character->id_race = $params_array['id_race'];
+        $character->id_magic_system = $params_array['id_magic_system'];
+        $character->character_name = $params_array['character_name'];
+        $character->age = $params_array['age'];
+        $character->description = $params_array['description'];
+        $character->story = $params_array['story'];
+        $character->magic_user = $magic_user;
         //   $character->image = $params_array['image'];
         $character->status = 1;
-        $character->position = 1;
+        $character->position = $params_array['position'];
 
         $character->save();
 
