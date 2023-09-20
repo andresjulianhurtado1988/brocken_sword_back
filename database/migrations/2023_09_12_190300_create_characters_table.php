@@ -24,7 +24,6 @@ return new class extends Migration {
             $table->integer('age')->nullable();
             $table->longText('description')->nullable();
             $table->longText('story')->nullable();
-            $table->string('image', 100)->nullable();
             $table->boolean('status')->nullable();
             $table->string('first_apparition', 100)->nullable();
             $table->integer('position')->nullable();

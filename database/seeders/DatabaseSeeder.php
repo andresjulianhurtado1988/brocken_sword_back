@@ -20,10 +20,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            LandTypeSeeder::class, LandsSeeder::class,
-            RacesSeeder::class, MagicSystemSeeder::class,
-            OrderSeeder::class, ReligionSeeder::class,
-            CharacterSeeder::class, JudgeSeeder::class
+            LandTypeSeeder::class,
+            LandsSeeder::class,
+            RacesSeeder::class,
+            MagicSystemSeeder::class,
+            OrderSeeder::class,
+            ReligionSeeder::class,
+            CharacterSeeder::class,
+            JudgeSeeder::class,
+            CharactersNameSeeder::class
         ]);
     }
 }

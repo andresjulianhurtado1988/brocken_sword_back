@@ -24,7 +24,6 @@ class CharacterSeeder extends Seeder
                     'age' => 16,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 1
@@ -38,7 +37,6 @@ class CharacterSeeder extends Seeder
                     'age' => 35,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 1
@@ -52,7 +50,6 @@ class CharacterSeeder extends Seeder
                     'age' => 27,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 1
@@ -66,7 +63,6 @@ class CharacterSeeder extends Seeder
                     'age' => 24,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 1
@@ -80,7 +76,6 @@ class CharacterSeeder extends Seeder
                     'age' => 50,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 1
@@ -94,7 +89,6 @@ class CharacterSeeder extends Seeder
                     'age' => 1000,
                     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
                     'story' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem aperiam itaque sed suscipit numquam atque, ullam, amet totam facilis quis mollitia earum pariatur sint delectus modi, praesentium nihil excepturi adipisci?',
-                    'image' => '',
                     'status' => 1,
                     'first_apparition' => 'A Dance with Shadows',
                     'position' => 2

@@ -31,6 +31,9 @@ Route::get('world/showLand/{id}', [LandController::class, 'showLand'])->name('sh
 Route::get('characters/getCharacters', [CharactersController::class, 'getCharacters'])->name('getCharacters');
 Route::get('characters/showCharacter/{id}', [CharactersController::class, 'showCharacter'])->name('showCharacter');
 Route::post('characters/registerCharacter', [CharactersController::class, 'registerCharacter'])->name('registerCharacter');
+Route::post('characters/registerCharacterImage', [CharactersController::class, 'registerCharacterImage'])->name('registerCharacterImage');
+Route::get('characters/getCharacterImage/{fileName}', [CharactersController::class, 'getCharacterImage'])->name('getCharacterImage');
+
 
 
 // religion
