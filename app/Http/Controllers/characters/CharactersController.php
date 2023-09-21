@@ -22,7 +22,7 @@ class CharactersController extends Controller
                 'c.character_name',
                 'c.description',
                 'c.story',
-                'i.img_character'
+                'i.img_character AS imagen'
 
             )
             ->leftJoin('img_character AS i', 'i.character_id', '=', 'c.id')
