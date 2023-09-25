@@ -28,7 +28,10 @@ class DatabaseSeeder extends Seeder
             ReligionSeeder::class,
             CharacterSeeder::class,
             JudgeSeeder::class,
-            CharactersNameSeeder::class
+            CharactersNameSeeder::class,
+            LandsNameSeeder::class,
+            ProtagonistSeeder::class,
+            BooksSeeder::class
         ]);
     }
 }

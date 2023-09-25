@@ -43,3 +43,5 @@ Route::get('religion/getDeity/{id_order}', [ReligionController::class, 'getDeity
 
 Route::get('world/getMagicSystem', [WorldController::class, 'getMagicSystem'])->name('getMagicSystem');
 Route::get('world/getRaces', [WorldController::class, 'getRaces'])->name('getRaces');
+Route::get('world/getProtagonist', [WorldController::class, 'getProtagonist'])->name('getProtagonist');
+Route::get('world/getBooks', [WorldController::class, 'getBooks'])->name('getBooks');

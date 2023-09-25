@@ -39,4 +39,36 @@ class WorldController extends Controller
             'races' => $races
         ]);
     }
+
+    public function getProtagonist()
+    {
+        $protagonist = DB::table('protagonist')
+            ->select(
+                'id',
+                'name'
+            )
+            ->get();
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'protagonist' => $protagonist
+        ]);
+    }
+
+    public function getBooks()
+    {
+        $books = DB::table('books')
+            ->select(
+                'id',
+                'name'
+            )
+            ->get();
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'books' => $books
+        ]);
+    }
 }
