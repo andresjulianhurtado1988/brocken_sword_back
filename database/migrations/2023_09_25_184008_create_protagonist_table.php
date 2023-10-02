@@ -13,8 +13,6 @@ return new class extends Migration {
         Schema::create('protagonist', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->unsignedBigInteger('land_id')->nullable();
-            $table->foreign('land_id')->references('id')->on('lands')->onDelete('cascade')->nullable();
             $table->longText('description');
             $table->timestamps();
         });

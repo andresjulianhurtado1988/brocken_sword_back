@@ -34,8 +34,6 @@ Route::post('characters/registerCharacter', [CharactersController::class, 'regis
 Route::post('characters/registerCharacterImage', [CharactersController::class, 'registerCharacterImage'])->name('registerCharacterImage');
 Route::get('characters/getCharacterImage/{fileName}', [CharactersController::class, 'getCharacterImage'])->name('getCharacterImage');
 
-
-
 // religion
 Route::get('religion/getReligion', [ReligionController::class, 'getReligion'])->name('getReligion');
 Route::get('religion/getJudge/{id_order}', [ReligionController::class, 'getJudge'])->name('getJudge');
@@ -45,3 +43,6 @@ Route::get('world/getMagicSystem', [WorldController::class, 'getMagicSystem'])->
 Route::get('world/getRaces', [WorldController::class, 'getRaces'])->name('getRaces');
 Route::get('world/getProtagonist', [WorldController::class, 'getProtagonist'])->name('getProtagonist');
 Route::get('world/getBooks', [WorldController::class, 'getBooks'])->name('getBooks');
+Route::get('world/getChaptersByCharacter/{book_id}/{character_id}', [WorldController::class, 'getChaptersByCharacter'])->name('getChaptersByCharacter');
+Route::post('world/registerChapter', [WorldController::class, 'registerChapter'])->name('registerChapter');
+Route::get('world/getChapters/{chapter_id}', [WorldController::class, 'getChapters'])->name('getChapters');

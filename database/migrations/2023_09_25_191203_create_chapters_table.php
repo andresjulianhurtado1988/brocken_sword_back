@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100)->nullable();
-            $table->unsignedBigInteger('protagonist_id')->nullable();
+            $table->unsignedBigInteger('protagonist_id')->default('0');
             $table->foreign('protagonist_id')->references('id')->on('protagonist')->onDelete('cascade')->nullable();
             $table->unsignedBigInteger('book_id')->nullable();
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade')->nullable();
             $table->longText('description')->nullable();
-            $table->integer('pages')->nullable();
+            $table->integer('pages')->default('0');
             $table->timestamps();
         });
     }

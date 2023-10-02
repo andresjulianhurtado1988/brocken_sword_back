@@ -18,25 +18,24 @@ class ProtagonistSeeder extends Seeder
             array(
                 array(
                     'name' => 'Haguen of Merak',
-                    'land_id' => 2,
                     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem libero repudiandae laudantium quaerat, animi corporis nostrum, sit recusandae excepturi dolor nam unde sequi corrupti dolores molestiae aliquam eos! Aspernatur, asperiores.',
                 ),
                 array(
                     'name' => 'Terissa of Numbra',
-                    'land_id' => 1,
                     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem libero repudiandae laudantium quaerat, animi corporis nostrum, sit recusandae excepturi dolor nam unde sequi corrupti dolores molestiae aliquam eos! Aspernatur, asperiores.',
                 ),
                 array(
-                    'name' => 'Ardos of Meldaric',
-                    'land_id' => 3,
+                    'name' => 'Ardos of Meldáric',
                     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem libero repudiandae laudantium quaerat, animi corporis nostrum, sit recusandae excepturi dolor nam unde sequi corrupti dolores molestiae aliquam eos! Aspernatur, asperiores.',
                 ),
                 array(
                     'name' => 'Hanna "The Black Fish" of Naminn',
-                    'land_id' => 4,
                     'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem libero repudiandae laudantium quaerat, animi corporis nostrum, sit recusandae excepturi dolor nam unde sequi corrupti dolores molestiae aliquam eos! Aspernatur, asperiores.',
                 ),
-
+                array(
+                    'name' => 'Interlude',
+                    'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem libero repudiandae laudantium quaerat, animi corporis nostrum, sit recusandae excepturi dolor nam unde sequi corrupti dolores molestiae aliquam eos! Aspernatur, asperiores.',
+                ),
             )
         );
     }

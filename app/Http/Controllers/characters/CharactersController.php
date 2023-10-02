@@ -11,6 +11,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+
 class CharactersController extends Controller
 {
     public function getCharacters()
@@ -153,5 +154,14 @@ class CharactersController extends Controller
 
         return response()->json($data, $data['code']);
     }
+
+
+    public function unafunctinoprueba()
+    {
+
+    }
+
+
+
 
 }

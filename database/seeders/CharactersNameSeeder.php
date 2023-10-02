@@ -14,37 +14,34 @@ class CharactersNameSeeder extends Seeder
     public function run(): void
     {
 
-        // 0 IS FOR MALE
-        // 1 IS FOR FEMALE
-
         DB::table('characters_names')->insert(
             array(
                 array(
-                    'name' => 'Alissía Ondrika',
+                    'name' => 'Alissía Óndrak',
                     'gender' => 'F',
                     'used' => 0,
                     'created_by_migration' => 1,
                 ),
                 array(
-                    'name' => 'Carter Ondrika "The Red"',
+                    'name' => 'Cárter Óndrak "The Red"',
                     'gender' => 'M',
                     'used' => 0,
                     'created_by_migration' => 1,
                 ),
                 array(
-                    'name' => 'Ratke Ondrika',
+                    'name' => 'Ratkke Óndrak',
                     'gender' => 'M',
                     'used' => 0,
                     'created_by_migration' => 1,
                 ),
                 array(
-                    'name' => 'Aidan Ondrika',
+                    'name' => 'Aidan Óndrak',
                     'gender' => 'M',
                     'used' => 0,
                     'created_by_migration' => 1,
                 ),
                 array(
-                    'name' => 'Ghena Ondrika',
+                    'name' => 'Ghena Óndrak',
                     'gender' => 'F',
                     'used' => 0,
                     'created_by_migration' => 1,

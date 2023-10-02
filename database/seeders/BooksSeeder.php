@@ -18,18 +18,22 @@ class BooksSeeder extends Seeder
             array(
                 array(
                     'name' => 'A Dance With The Shadows',
+                    'cover_image' => '',
                     'pages' => 0
                 ),
                 array(
                     'name' => 'The Frozen Bridge',
+                    'cover_image' => '',
                     'pages' => 0
                 ),
                 array(
                     'name' => 'The Red Mirror',
+                    'cover_image' => '',
                     'pages' => 0
                 ),
                 array(
                     'name' => 'The Broken Sword',
+                    'cover_image' => '',
                     'pages' => 0
                 ),
 
