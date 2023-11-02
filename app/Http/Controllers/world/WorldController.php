@@ -4,6 +4,7 @@ namespace App\Http\Controllers\world;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chapters;
+use App\Models\CharacterContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -97,7 +98,7 @@ class WorldController extends Controller
 
     public function registerChapter(Request $request)
     {
-        // recoger datos por post
+
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
 
@@ -136,6 +137,46 @@ class WorldController extends Controller
             ->leftJoin('protagonist AS p', 'p.id', 'c.protagonist_id')
             ->where('c.id', $chapter_id)
             ->first();
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'chapters' => $chapters
+        ]);
+    }
+
+
+    public function registerChapterContent(Request $request)
+    {
+        $json = $request->input('json', null);
+        $params_array = json_decode($json, true);
+
+        $chapters = new CharacterContent();
+        $chapters->chapter_id = $params_array['chapter_id'];
+        $chapters->description = $params_array['chapter'];
+
+        $chapters->save();
+
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'chapters' => $chapters
+        );
+
+        // devolver resultado
+        return response()->json($data, $data['code']);
+    }
+
+    public function getStoryByChapter($chapter_id)
+    {
+
+
+        $chapters = DB::table('chapters_content')
+            ->select('description')
+            ->where('chapter_id', $chapter_id)
+            ->orderBy('id', 'ASC')
+            ->get();
 
         return response()->json([
             'code' => 200,

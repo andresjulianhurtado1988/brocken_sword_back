@@ -13,7 +13,8 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'characters/registerCharacter',
-        'characters/registerCharacterImage'
+        'characters/registerCharacterImage',
+        'ideas/createIdea'
         //     'api/city/updateCity/*',
         //     'api/customer/registerCustomer',
         //     'api/customer/updateCustomer/*',

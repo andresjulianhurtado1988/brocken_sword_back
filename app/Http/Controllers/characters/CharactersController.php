@@ -91,8 +91,6 @@ class CharactersController extends Controller
 
         $character->save();
 
-
-
         $data = array(
             'status' => 'success',
             'code' => 200,
@@ -108,7 +106,6 @@ class CharactersController extends Controller
     {
 
         header('Access-Control-Allow-Headers: *');
-
 
         $id_chacaracter = intval($request->id_chacaracter);
 
@@ -154,14 +151,6 @@ class CharactersController extends Controller
 
         return response()->json($data, $data['code']);
     }
-
-
-    public function unafunctinoprueba()
-    {
-
-    }
-
-
 
 
 }

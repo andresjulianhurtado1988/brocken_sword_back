@@ -11,9 +11,6 @@ class ReligionController extends Controller
     public function getReligion()
     {
 
-        // religion: 'id','deity','story','description','order_pattern_id','main_altar_land_id'
-        // judges: 'id','judge_name','story','description','judge_deity_id'
-
         $religion = DB::table('orders')
             ->select(
                 'id',
@@ -22,9 +19,6 @@ class ReligionController extends Controller
             ->groupBy('id')
             ->groupBy('order_name')
             ->get();
-
-        // var_dump($religion);
-
 
         return response()->json([
             'code' => 200,
@@ -46,9 +40,6 @@ class ReligionController extends Controller
             ->where('order_id', $id_order)
             ->get();
 
-        // var_dump($info);
-
-
         return response()->json([
             'code' => 200,
             'status' => 'success',
@@ -68,8 +59,6 @@ class ReligionController extends Controller
             )
             ->where('order_pattern_id', $id_order)
             ->get();
-
-        // var_dump($info);
 
 
         return response()->json([

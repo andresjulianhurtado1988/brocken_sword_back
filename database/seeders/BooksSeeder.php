@@ -27,7 +27,7 @@ class BooksSeeder extends Seeder
                     'pages' => 0
                 ),
                 array(
-                    'name' => 'The Red Mirror',
+                    'name' => 'The Four Staffs',
                     'cover_image' => '',
                     'pages' => 0
                 ),

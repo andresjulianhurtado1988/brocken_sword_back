@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             CharactersNameSeeder::class,
             LandsNameSeeder::class,
             ProtagonistSeeder::class,
-            BooksSeeder::class
+            BooksSeeder::class,
+            ThemesSeeder::class
         ]);
     }
 }

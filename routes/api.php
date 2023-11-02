@@ -1,11 +1,13 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\world\LandController;
 use App\Http\Controllers\characters\CharactersController;
 use App\Http\Controllers\religion\ReligionController;
 use App\Http\Controllers\world\WorldController;
+use App\Http\Controllers\ideas\IdeasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +48,12 @@ Route::get('world/getBooks', [WorldController::class, 'getBooks'])->name('getBoo
 Route::get('world/getChaptersByCharacter/{book_id}/{character_id}', [WorldController::class, 'getChaptersByCharacter'])->name('getChaptersByCharacter');
 Route::post('world/registerChapter', [WorldController::class, 'registerChapter'])->name('registerChapter');
 Route::get('world/getChapters/{chapter_id}', [WorldController::class, 'getChapters'])->name('getChapters');
+Route::post('world/registerChapterContent', [WorldController::class, 'registerChapterContent'])->name('registerChapterContent');
+
+Route::get('world/getStoryByChapter/{chapter_id}', [WorldController::class, 'getStoryByChapter'])->name('getStoryByChapter');
+
+
+// IDEAS 
+Route::get('ideas/getThemes', [IdeasController::class, 'getThemes'])->name('getThemes');
+Route::get('ideas/getIdeas', [IdeasController::class, 'getIdeas'])->name('getIdeas');
+Route::post('ideas/createIdea', [IdeasController::class, 'createIdea'])->name('createIdea');
