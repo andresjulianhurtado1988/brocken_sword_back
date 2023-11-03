@@ -13,7 +13,6 @@ class LandController extends Controller
 
     public function getLands()
     {
-
         $lands = DB::table('lands AS l')
             ->select(
                 'l.id',

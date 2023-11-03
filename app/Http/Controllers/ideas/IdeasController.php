@@ -7,6 +7,7 @@ use App\Models\Ideas;
 use App\Models\Themes;
 use DB;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class IdeasController extends Controller
 {
@@ -31,8 +32,16 @@ class IdeasController extends Controller
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
 
+        if (empty($params_array['abouth_id'])) {
+            $abouth_id = 0;
+        } else {
+            $abouth_id = $params_array['abouth_id'];
+        }
+
+
         $ideas = new Ideas();
         $ideas->theme_id = $params_array['themes_id'];
+        $ideas->abouth = $abouth_id;
         $ideas->description_idea = $params_array['description'];
         $ideas->save();
 
@@ -46,7 +55,7 @@ class IdeasController extends Controller
         return response()->json($data, $data['code']);
     }
 
-    public function getIdeas()
+    public function getAllIdeas()
     {
 
         $ideas = DB::table('ideas AS i')
@@ -63,6 +72,35 @@ class IdeasController extends Controller
 
 
         return response()->json($data, $data['code']);
+
+    }
+
+    public function getIdeas($theme_id)
+    {
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'ideas' => Ideas::where('theme_id', $theme_id)->get()
+        );
+
+        // devolver resultado
+        return response()->json($data, $data['code']);
+
+    }
+
+    public function pdfIdeas($theme_id)
+    {
+
+
+        $data = Ideas::where('theme_id', $theme_id)->get();
+
+        $pdf = Pdf::loadView('/pdf_ideas', compact('data'));
+
+        return $pdf->stream();
+
+        //  return $pdf->download('invoice.pdf');
+        //  return view('/pdf_ideas', compact($data));
 
     }
 

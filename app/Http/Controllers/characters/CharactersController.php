@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\characters;
 
 use App\Http\Controllers\Controller;
+use App\Models\CharacterNames;
 use App\Models\Characters;
 use App\Models\ImgCharacter;
+use App\Models\Protagonist;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -36,6 +38,15 @@ class CharactersController extends Controller
         ]);
     }
 
+    public function getAllCharacters()
+    {
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'charactersNames' => CharacterNames::all()
+        ]);
+    }
     public function showCharacter($id)
     {
 
@@ -152,5 +163,14 @@ class CharactersController extends Controller
         return response()->json($data, $data['code']);
     }
 
+    public function getProtagonist()
+    {
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'protagonist' => Protagonist::all()
+        ]);
+    }
 
 }

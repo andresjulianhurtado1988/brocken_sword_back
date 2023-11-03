@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MagicSystems extends Model
 {
     use HasFactory;
+    protected $table = 'magic_system';
 }
+
+

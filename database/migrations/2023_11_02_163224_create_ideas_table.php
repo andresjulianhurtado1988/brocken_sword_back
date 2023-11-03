@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('theme_id')->default('0');
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade')->nullable();
+            $table->integer('abouth')->default(10);
             $table->longText('description_idea')->nullable();
             $table->timestamps();
         });
