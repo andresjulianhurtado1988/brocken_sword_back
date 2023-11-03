@@ -4,10 +4,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\world\LandController;
-use App\Http\Controllers\characters\CharactersController;
-use App\Http\Controllers\religion\ReligionController;
 use App\Http\Controllers\world\WorldController;
 use App\Http\Controllers\ideas\IdeasController;
+use App\Http\Controllers\religion\ReligionController;
+use App\Http\Controllers\characters\CharactersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // the lands
 Route::get('land/getLands', [LandController::class, 'getLands'])->name('getLands');
 Route::get('land/showLand/{id}', [LandController::class, 'showLand'])->name('showLand');
+Route::get('land/getAllLands', [LandController::class, 'getAllLands'])->name('getAllLands');
 
 // characters
 Route::get('characters/getCharacters', [CharactersController::class, 'getCharacters'])->name('getCharacters');
@@ -37,7 +38,6 @@ Route::post('characters/registerCharacterImage', [CharactersController::class, '
 Route::get('characters/getCharacterImage/{fileName}', [CharactersController::class, 'getCharacterImage'])->name('getCharacterImage');
 Route::get('characters/getProtagonist', [CharactersController::class, 'getProtagonist'])->name('getProtagonist');
 Route::get('characters/getAllCharacters', [CharactersController::class, 'getAllCharacters'])->name('getAllCharacters');
-
 
 
 // religion

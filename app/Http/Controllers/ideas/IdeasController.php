@@ -58,18 +58,15 @@ class IdeasController extends Controller
     public function getAllIdeas()
     {
 
-        $ideas = DB::table('ideas AS i')
-            ->select(DB::raw('COUNT(i.theme_id) AS cant_ideas'), 't.description', 'i.theme_id')
-            ->leftJoin('themes AS t', 't.id', 'i.theme_id')
-            ->groupBy('i.theme_id', 't.description')
-            ->get();
-
         $data = array(
             'status' => 'success',
             'code' => 200,
-            'ideas' => $ideas
+            'ideas' => DB::table('ideas AS i')
+                ->select(DB::raw('COUNT(i.theme_id) AS cant_ideas'), 't.description', 'i.theme_id')
+                ->leftJoin('themes AS t', 't.id', 'i.theme_id')
+                ->groupBy('i.theme_id', 't.description')
+                ->get()
         );
-
 
         return response()->json($data, $data['code']);
 
@@ -84,7 +81,6 @@ class IdeasController extends Controller
             'ideas' => Ideas::where('theme_id', $theme_id)->get()
         );
 
-        // devolver resultado
         return response()->json($data, $data['code']);
 
     }
@@ -92,15 +88,10 @@ class IdeasController extends Controller
     public function pdfIdeas($theme_id)
     {
 
-
         $data = Ideas::where('theme_id', $theme_id)->get();
-
         $pdf = Pdf::loadView('/pdf_ideas', compact('data'));
-
         return $pdf->stream();
 
-        //  return $pdf->download('invoice.pdf');
-        //  return view('/pdf_ideas', compact($data));
 
     }
 

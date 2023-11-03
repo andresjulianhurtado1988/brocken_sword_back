@@ -19,22 +19,21 @@ class CharactersController extends Controller
     public function getCharacters()
     {
 
-        $characters = DB::table('characters AS c')
-            ->select(
-                'c.id',
-                'c.character_name',
-                'c.description',
-                'c.story',
-                'i.img_character AS imagen'
-
-            )
-            ->leftJoin('img_character AS i', 'i.character_id', '=', 'c.id')
-            ->get();
 
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'characters' => $characters
+            'characters' => DB::table('characters AS c')
+                ->select(
+                    'c.id',
+                    'c.character_name',
+                    'c.description',
+                    'c.story',
+                    'i.img_character AS imagen'
+
+                )
+                ->leftJoin('img_character AS i', 'i.character_id', '=', 'c.id')
+                ->get()
         ]);
     }
 
@@ -50,23 +49,20 @@ class CharactersController extends Controller
     public function showCharacter($id)
     {
 
-        $characters = DB::table('characters AS c')
-            ->select(
-                'c.id',
-                'c.character_name',
-                'c.description',
-                'c.story',
-                'i.img_character'
-
-            )->where('c.id', $id)
-            ->leftJoin('img_character AS i', 'i.character_id', '=', 'c.id')
-            ->get();
-
-
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'characters' => $characters
+            'characters' => DB::table('characters AS c')
+                ->select(
+                    'c.id',
+                    'c.character_name',
+                    'c.description',
+                    'c.story',
+                    'i.img_character'
+
+                )->where('c.id', $id)
+                ->leftJoin('img_character AS i', 'i.character_id', '=', 'c.id')
+                ->get()
         ]);
 
     }
@@ -125,9 +121,7 @@ class CharactersController extends Controller
         if ($image) {
             $image_path = time() . $image->getClientOriginalName();
             \Storage::disk('characters')->put($image_path, \File::get($image));
-
         }
-
 
         $character_img = new ImgCharacter();
         $character_img->img_name = $image->getClientOriginalName();

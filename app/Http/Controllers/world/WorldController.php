@@ -13,8 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-
-
 class WorldController extends Controller
 {
     public function getMagicSystem()
@@ -49,19 +47,18 @@ class WorldController extends Controller
 
     public function getChaptersByCharacter($book_id, $character_id)
     {
-        $chaptersByCharacter = DB::table('chapters')
-            ->select(
-                'id',
-                'name',
-                'pages',
-                'description'
-            )->where([['book_id', $book_id], ['protagonist_id', $character_id]])
-            ->get();
 
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'chaptersByCharacter' => $chaptersByCharacter
+            'chaptersByCharacter' => DB::table('chapters')
+                ->select(
+                    'id',
+                    'name',
+                    'pages',
+                    'description'
+                )->where([['book_id', $book_id], ['protagonist_id', $character_id]])
+                ->get()
         ]);
     }
 
@@ -79,35 +76,32 @@ class WorldController extends Controller
         $chapters->pages = $params_array['pages'];
         $chapters->save();
 
-
         $data = array(
             'status' => 'success',
             'code' => 200,
             'chapters' => $chapters
         );
 
-        // devolver resultado
         return response()->json($data, $data['code']);
 
     }
     public function getChapters($chapter_id)
     {
-        $chapters = DB::table('chapters AS c')
-            ->select(
-                'c.id',
-                'c.name',
-                'c.pages',
-                'c.description',
-                'p.name AS protagonist'
-            )
-            ->leftJoin('protagonist AS p', 'p.id', 'c.protagonist_id')
-            ->where('c.id', $chapter_id)
-            ->first();
 
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'chapters' => $chapters
+            'chapters' => DB::table('chapters AS c')
+                ->select(
+                    'c.id',
+                    'c.name',
+                    'c.pages',
+                    'c.description',
+                    'p.name AS protagonist'
+                )
+                ->leftJoin('protagonist AS p', 'p.id', 'c.protagonist_id')
+                ->where('c.id', $chapter_id)
+                ->first()
         ]);
     }
 
@@ -122,30 +116,26 @@ class WorldController extends Controller
 
         $chapters->save();
 
-
         $data = array(
             'status' => 'success',
             'code' => 200,
             'chapters' => $chapters
         );
 
-        // devolver resultado
         return response()->json($data, $data['code']);
     }
 
     public function getStoryByChapter($chapter_id)
     {
 
-        $chapters = DB::table('chapters_content')
-            ->select('description')
-            ->where('chapter_id', $chapter_id)
-            ->orderBy('id', 'ASC')
-            ->get();
-
         return response()->json([
             'code' => 200,
             'status' => 'success',
-            'chapters' => $chapters
+            'chapters' => DB::table('chapters_content')
+                ->select('description')
+                ->where('chapter_id', $chapter_id)
+                ->orderBy('id', 'ASC')
+                ->get()
         ]);
     }
 }
