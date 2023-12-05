@@ -322,6 +322,13 @@ class CharactersNameSeeder extends Seeder
                     'used' => 0,
                     'created_by_migration' => 1,
                 ),
+                array(
+                    'name' => fake()->name(),
+                    'gender' => '',
+                    'used' => 0,
+                    'created_by_migration' => 1,
+                ),
+
 
             )
         );
