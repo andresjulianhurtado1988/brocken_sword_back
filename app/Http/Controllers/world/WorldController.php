@@ -11,12 +11,13 @@ use App\Models\Protagonist;
 use App\Models\Races;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Creatures;
+use App\Models\CreatureGalery;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
-
-class WorldController extends Controller
-{
-    public function getMagicSystem()
-    {
+class WorldController extends Controller {
+    public function getMagicSystem() {
 
         return response()->json([
             'code' => 200,
@@ -25,8 +26,7 @@ class WorldController extends Controller
         ]);
     }
 
-    public function getRaces()
-    {
+    public function getRaces() {
 
         return response()->json([
             'code' => 200,
@@ -35,8 +35,7 @@ class WorldController extends Controller
         ]);
     }
 
-    public function getBooks()
-    {
+    public function getBooks() {
 
         return response()->json([
             'code' => 200,
@@ -45,8 +44,7 @@ class WorldController extends Controller
         ]);
     }
 
-    public function getChaptersByCharacter($book_id, $character_id)
-    {
+    public function getChaptersByCharacter($book_id, $character_id) {
 
         return response()->json([
             'code' => 200,
@@ -62,8 +60,7 @@ class WorldController extends Controller
         ]);
     }
 
-    public function registerChapter(Request $request)
-    {
+    public function registerChapter(Request $request) {
 
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
@@ -85,8 +82,7 @@ class WorldController extends Controller
         return response()->json($data, $data['code']);
 
     }
-    public function getChapters($chapter_id)
-    {
+    public function getChapters($chapter_id) {
 
         return response()->json([
             'code' => 200,
@@ -105,8 +101,7 @@ class WorldController extends Controller
         ]);
     }
 
-    public function registerChapterContent(Request $request)
-    {
+    public function registerChapterContent(Request $request) {
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
 
@@ -125,8 +120,7 @@ class WorldController extends Controller
         return response()->json($data, $data['code']);
     }
 
-    public function getStoryByChapter($chapter_id)
-    {
+    public function getStoryByChapter($chapter_id) {
 
         return response()->json([
             'code' => 200,
@@ -138,4 +132,97 @@ class WorldController extends Controller
                 ->get()
         ]);
     }
+
+    // FUNCTIONS TO CREATURES AND OTHERS MAGIC BEASTS
+    public function getAllCreatures() {
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'creatures' => DB::table('creatures AS c')
+                ->select(DB::raw('COUNT(g.creature_id) AS cant_img'), 'c.creature_name', 'c.id')
+                ->leftJoin('creatures_galery AS g', 'g.creature_id', 'c.id')
+                ->groupBy('g.creature_id', 'c.creature_name', 'c.id')
+                ->get()
+        ]);
+
+    }
+
+    public function getCreature($creature_id) {
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'creatures' => DB::table('creatures AS c')
+                ->select('c.id', 'c.creature_name', 'c.description', 'l.name AS origin')
+                ->leftJoin('lands_names AS l', 'l.id', 'c.land_id')
+                ->where('c.id', $creature_id)
+                ->orderBy('c.id', 'ASC')
+                ->get()
+        ]);
+    }
+
+    public function registerCreatureImage(Request $request) {
+
+        header('Access-Control-Allow-Headers: *');
+
+        $creature_id = intval($request->creature_id);
+
+        $image = $request->file('image');
+
+        if($image) {
+            $image_path = time().$image->getClientOriginalName();
+            \Storage::disk('creatures')->put($image_path, \File::get($image));
+        }
+
+        $creature_img = new CreatureGalery();
+        $creature_img->img_name = $image->getClientOriginalName();
+        $creature_img->img_creature = $image_path;
+        $creature_img->creature_id = $creature_id;
+        $creature_img->save();
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'creature' => $creature_img
+        );
+
+        return response()->json($data, 200);
+    }
+
+    public function getCreatureImage($filename) {
+
+
+        $isset = \Storage::disk('creatures')->exists($filename);
+
+        if($isset) {
+            $file = \Storage::disk('creatures')->get($filename);
+            return new Response($file, 200);
+        } else {
+            $data = [
+                'code' => 404,
+                'status' => 'error',
+            ];
+        }
+
+        return response()->json($data, $data['code']);
+    }
+
+
+    public function createCreature(Request $request) {
+
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'creatures' => Creatures::all()
+        ]);
+    }
+
+    public function getCreatureImageAll($creature_id) {
+        return response()->json([
+            'code' => 200,
+            'status' => 'success',
+            'creatures' => CreatureGalery::where('creature_id', $creature_id)->get()
+        ]);
+    }
+
 }

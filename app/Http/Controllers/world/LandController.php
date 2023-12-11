@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
+
+
 class LandController extends Controller
 {
 
@@ -21,6 +23,7 @@ class LandController extends Controller
         ]);
 
     }
+
     public function getLands()
     {
 
