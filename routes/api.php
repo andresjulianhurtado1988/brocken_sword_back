@@ -8,6 +8,7 @@ use App\Http\Controllers\world\WorldController;
 use App\Http\Controllers\ideas\IdeasController;
 use App\Http\Controllers\religion\ReligionController;
 use App\Http\Controllers\characters\CharactersController;
+use App\Http\Controllers\ThemesWorldController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,6 @@ Route::get('world/getChapters/{chapter_id}', [WorldController::class, 'getChapte
 Route::post('world/registerChapterContent', [WorldController::class, 'registerChapterContent'])->name('registerChapterContent');
 Route::get('world/getStoryByChapter/{chapter_id}', [WorldController::class, 'getStoryByChapter'])->name('getStoryByChapter');
 
-
 // IDEAS
 Route::get('ideas/getThemes', [IdeasController::class, 'getThemes'])->name('getThemes');
 Route::get('ideas/getAllIdeas', [IdeasController::class, 'getAllIdeas'])->name('getAllIdeas');
@@ -71,12 +71,14 @@ Route::get('ideas/getIdeas/{theme_id}', [IdeasController::class, 'getIdeas'])->n
 Route::get('ideas/pdfIdeas/{theme_id}', [IdeasController::class, 'pdfIdeas'])->name('pdfIdeas');
 Route::post('ideas/createIdea', [IdeasController::class, 'createIdea'])->name('createIdea');
 
-
-
 //CREATURES
-Route::get('creatures/getAllCreatures', [WorldController::class, 'getAllCreatures'])->name('getAllCreatures');
+Route::get('creatures/getThemesWorldAllImages', [WorldController::class, 'getAllCreatures'])->name('getAllCreatures');
 Route::get('creatures/getCreature/{creature_id}', [WorldController::class, 'getCreature'])->name('getCreature');
 Route::post('creatures/createCreature', [WorldController::class, 'createCreature'])->name('createIdea');
 Route::get('creatures/getCreatureImage/{fileName}', [WorldController::class, 'getCreatureImage'])->name('getCreatureImage');
 Route::post('creatures/registerCreatureImage', [WorldController::class, 'registerCreatureImage'])->name('registerCreatureImage');
 Route::get('creatures/getCreatureImageAll/{creature_id}', [WorldController::class, 'getCreatureImageAll'])->name('getCreatureImageAll');
+
+// THEMES OF THE WORLD
+Route::get('themesWorld/getThemesWorldAll', [ThemesWorldController::class, 'getThemesWorldAll'])->name('getThemesWorldAll');
+Route::get('themesWorld/getThemesWorldAllImages/{fileName}', [ThemesWorldController::class, 'getThemesWorldAllImages'])->name('getThemesWorldAllImages');

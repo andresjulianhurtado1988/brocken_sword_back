@@ -7,7 +7,6 @@ use App\Models\Books;
 use App\Models\Chapters;
 use App\Models\CharacterContent;
 use App\Models\MagicSystems;
-use App\Models\Protagonist;
 use App\Models\Races;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +15,10 @@ use App\Models\CreatureGalery;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
-class WorldController extends Controller {
-    public function getMagicSystem() {
+class WorldController extends Controller
+{
+    public function getMagicSystem()
+    {
 
         return response()->json([
             'code' => 200,
@@ -26,7 +27,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function getRaces() {
+    public function getRaces()
+    {
 
         return response()->json([
             'code' => 200,
@@ -35,7 +37,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function getBooks() {
+    public function getBooks()
+    {
 
         return response()->json([
             'code' => 200,
@@ -44,7 +47,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function getChaptersByCharacter($book_id, $character_id) {
+    public function getChaptersByCharacter($book_id, $character_id)
+    {
 
         return response()->json([
             'code' => 200,
@@ -60,7 +64,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function registerChapter(Request $request) {
+    public function registerChapter(Request $request)
+    {
 
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
@@ -82,7 +87,8 @@ class WorldController extends Controller {
         return response()->json($data, $data['code']);
 
     }
-    public function getChapters($chapter_id) {
+    public function getChapters($chapter_id)
+    {
 
         return response()->json([
             'code' => 200,
@@ -101,7 +107,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function registerChapterContent(Request $request) {
+    public function registerChapterContent(Request $request)
+    {
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
 
@@ -120,7 +127,8 @@ class WorldController extends Controller {
         return response()->json($data, $data['code']);
     }
 
-    public function getStoryByChapter($chapter_id) {
+    public function getStoryByChapter($chapter_id)
+    {
 
         return response()->json([
             'code' => 200,
@@ -134,7 +142,8 @@ class WorldController extends Controller {
     }
 
     // FUNCTIONS TO CREATURES AND OTHERS MAGIC BEASTS
-    public function getAllCreatures() {
+    public function getAllCreatures()
+    {
 
         return response()->json([
             'code' => 200,
@@ -148,7 +157,8 @@ class WorldController extends Controller {
 
     }
 
-    public function getCreature($creature_id) {
+    public function getCreature($creature_id)
+    {
         return response()->json([
             'code' => 200,
             'status' => 'success',
@@ -161,7 +171,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function registerCreatureImage(Request $request) {
+    public function registerCreatureImage(Request $request)
+    {
 
         header('Access-Control-Allow-Headers: *');
 
@@ -169,8 +180,8 @@ class WorldController extends Controller {
 
         $image = $request->file('image');
 
-        if($image) {
-            $image_path = time().$image->getClientOriginalName();
+        if ($image) {
+            $image_path = time() . $image->getClientOriginalName();
             \Storage::disk('creatures')->put($image_path, \File::get($image));
         }
 
@@ -189,12 +200,13 @@ class WorldController extends Controller {
         return response()->json($data, 200);
     }
 
-    public function getCreatureImage($filename) {
+    public function getCreatureImage($filename)
+    {
 
 
         $isset = \Storage::disk('creatures')->exists($filename);
 
-        if($isset) {
+        if ($isset) {
             $file = \Storage::disk('creatures')->get($filename);
             return new Response($file, 200);
         } else {
@@ -208,7 +220,8 @@ class WorldController extends Controller {
     }
 
 
-    public function createCreature(Request $request) {
+    public function createCreature(Request $request)
+    {
 
         return response()->json([
             'code' => 200,
@@ -217,7 +230,8 @@ class WorldController extends Controller {
         ]);
     }
 
-    public function getCreatureImageAll($creature_id) {
+    public function getCreatureImageAll($creature_id)
+    {
         return response()->json([
             'code' => 200,
             'status' => 'success',
