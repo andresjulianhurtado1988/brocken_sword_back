@@ -27,8 +27,6 @@ class IdeasController extends Controller
 
     public function createIdea(Request $request)
     {
-
-
         $json = $request->input('json', null);
         $params_array = json_decode($json, true);
 

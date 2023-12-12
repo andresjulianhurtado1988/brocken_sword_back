@@ -25,10 +25,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// the lands
+// the lands / mystical places
 Route::get('land/getLands', [LandController::class, 'getLands'])->name('getLands');
 Route::get('land/showLand/{id}', [LandController::class, 'showLand'])->name('showLand');
 Route::get('land/getAllLands', [LandController::class, 'getAllLands'])->name('getAllLands');
+Route::get('land/getAllMysticalPlaces', [LandController::class, 'getAllMysticalPlaces'])->name('getAllMysticalPlaces');
+Route::get('land/getMysticalPlace/{id}', [LandController::class, 'getMysticalPlace'])->name('getMysticalPlace');
+Route::post('land/registerMysticalPlace', [LandController::class, 'registerMysticalPlace'])->name('registerMysticalPlace');
+Route::post('land/registerMysticalPlaceImage', [LandController::class, 'registerMysticalPlaceImage'])->name('registerMysticalPlaceImage');
+Route::get('land/getMysticalPlaceAllImages/{id}', [LandController::class, 'getMysticalPlaceAllImages'])->name('getMysticalPlaceAllImages');
+Route::get('land/getMysticalPlaceImage/{fileName}', [LandController::class, 'getMysticalPlaceImage'])->name('getMysticalPlaceImage');
 
 // characters
 Route::get('characters/getCharacters', [CharactersController::class, 'getCharacters'])->name('getCharacters');
