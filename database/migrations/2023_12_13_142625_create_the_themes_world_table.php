@@ -10,14 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('img_themes_world', function (Blueprint $table) {
+        Schema::create('the_themes_world', function (Blueprint $table) {
             $table->id();
-            $table->string('img_name', 100);
-            $table->string('img_theme_world', 100);
-            $table->string('theme_world_title', 100);
-            $table->longText('description');
-            $table->string('route', 100);
-
+            $table->longText('allDescription');
+            $table->string('title', 100);
+            $table->unsignedBigInteger('id_img_theme_world');
+            $table->foreign('id_img_theme_world')->references('id')->on('img_themes_world')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('img_themes_world');
+        Schema::dropIfExists('the_themes_world');
     }
 };

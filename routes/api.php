@@ -82,3 +82,6 @@ Route::get('creatures/getCreatureImageAll/{creature_id}', [WorldController::clas
 // THEMES OF THE WORLD
 Route::get('themesWorld/getThemesWorldAll', [ThemesWorldController::class, 'getThemesWorldAll'])->name('getThemesWorldAll');
 Route::get('themesWorld/getThemesWorldAllImages/{fileName}', [ThemesWorldController::class, 'getThemesWorldAllImages'])->name('getThemesWorldAllImages');
+Route::post('themesWorld/createThemeWorld', [ThemesWorldController::class, 'createThemeWorld'])->name('createThemeWorld');
+Route::get('themesWorld/getThemesWorld/{id}', [ThemesWorldController::class, 'getThemesWorld'])->name('getThemesWorld');
+
