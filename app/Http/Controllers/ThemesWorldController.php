@@ -69,4 +69,55 @@ class ThemesWorldController extends Controller
         return response()->json($data, $data['code']);
     }
 
+    public function getThemesWorldUpdate($id)
+    {
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'themeWorld' => ThemeWorld::where('id', $id)->get()
+        );
+
+        return response()->json($data, $data['code']);
+    }
+
+    public function updateThemesWorld(Request $request)
+    {
+
+        $json = $request->input('json', null);
+        $params_array = json_decode($json, true);
+
+        $id = $params_array['id'];
+
+        $theme = ThemeWorld::where('id', $id)->update(
+            $params_array
+        );
+
+        $data = array('status' => 'success',
+            'code' => 200,
+            'message' => 'Registro actualizado',
+            'theme' => $params_array
+        );
+
+        return response()->json($data, $data['code']);
+
+    }
+
+    public function deleteThemeWorld($id)
+    {
+        $theme = ThemeWorld::where('id', $id)->first();
+
+        if (!empty($theme)) {
+
+            $theme->delete();
+        }
+
+
+        $data = [
+            'code' => 200,
+            'status' => 'success',
+            'theme' => $theme,
+            'message' => 'Eliminado con éxito'
+        ];
+    }
+
 }

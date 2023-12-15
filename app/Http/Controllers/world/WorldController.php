@@ -223,11 +223,22 @@ class WorldController extends Controller
     public function createCreature(Request $request)
     {
 
-        return response()->json([
-            'code' => 200,
+        $json = $request->input('json', null);
+        $params_array = json_decode($json, true);
+
+        $creatures = new Creatures();
+        $creatures->creature_name = $params_array['creature_name'];
+        $creatures->land_id = $params_array['land_id'];
+        $creatures->description = $params_array['description'];
+        $creatures->save();
+
+        $data = array(
             'status' => 'success',
-            'creatures' => Creatures::all()
-        ]);
+            'code' => 200,
+            '$creatures' => $creatures
+        );
+
+        return response()->json($data, $data['code']);
     }
 
     public function getCreatureImageAll($creature_id)

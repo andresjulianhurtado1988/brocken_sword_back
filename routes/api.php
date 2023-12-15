@@ -72,9 +72,9 @@ Route::get('ideas/pdfIdeas/{theme_id}', [IdeasController::class, 'pdfIdeas'])->n
 Route::post('ideas/createIdea', [IdeasController::class, 'createIdea'])->name('createIdea');
 
 //CREATURES
-Route::get('creatures/getThemesWorldAllImages', [WorldController::class, 'getAllCreatures'])->name('getAllCreatures');
+Route::get('creatures/getAllCreatures', [WorldController::class, 'getAllCreatures'])->name('getAllCreatures');
 Route::get('creatures/getCreature/{creature_id}', [WorldController::class, 'getCreature'])->name('getCreature');
-Route::post('creatures/createCreature', [WorldController::class, 'createCreature'])->name('createIdea');
+Route::post('creatures/createCreature', [WorldController::class, 'createCreature'])->name('createCreature');
 Route::get('creatures/getCreatureImage/{fileName}', [WorldController::class, 'getCreatureImage'])->name('getCreatureImage');
 Route::post('creatures/registerCreatureImage', [WorldController::class, 'registerCreatureImage'])->name('registerCreatureImage');
 Route::get('creatures/getCreatureImageAll/{creature_id}', [WorldController::class, 'getCreatureImageAll'])->name('getCreatureImageAll');
@@ -84,4 +84,7 @@ Route::get('themesWorld/getThemesWorldAll', [ThemesWorldController::class, 'getT
 Route::get('themesWorld/getThemesWorldAllImages/{fileName}', [ThemesWorldController::class, 'getThemesWorldAllImages'])->name('getThemesWorldAllImages');
 Route::post('themesWorld/createThemeWorld', [ThemesWorldController::class, 'createThemeWorld'])->name('createThemeWorld');
 Route::get('themesWorld/getThemesWorld/{id}', [ThemesWorldController::class, 'getThemesWorld'])->name('getThemesWorld');
+Route::get('themesWorld/getThemesWorldUpdate/{id}', [ThemesWorldController::class, 'getThemesWorldUpdate'])->name('getThemesWorldUpdate');
+Route::post('themesWorld/updateThemesWorld', [ThemesWorldController::class, 'updateThemesWorld'])->name('updateThemesWorld');
+Route::get('themesWorld/deleteThemeWorld/{id}', [ThemesWorldController::class, 'deleteThemeWorld'])->name('deleteThemeWorld');
 
