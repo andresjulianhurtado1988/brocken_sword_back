@@ -59,7 +59,7 @@ class CharactersNameSeeder extends Seeder
                     'created_by_migration' => 1,
                 ),
                 array(
-                    'name' => 'Robert Rósbam',
+                    'name' => 'Robert Rosban',
                     'gender' => 'M',
                     'used' => 0,
                     'created_by_migration' => 1,
@@ -175,7 +175,7 @@ class CharactersNameSeeder extends Seeder
                 array(
                     'name' => 'Trevor Corvin',
                     'gender' => 'M',
-                    'used' => 0,
+                    'used' => 1,
                     'created_by_migration' => 1,
                 ),
                 array(
@@ -187,7 +187,7 @@ class CharactersNameSeeder extends Seeder
                 array(
                     'name' => 'Osaie Corvin',
                     'gender' => 'F',
-                    'used' => 0,
+                    'used' => 1,
                     'created_by_migration' => 1,
                 ),
                 array(
