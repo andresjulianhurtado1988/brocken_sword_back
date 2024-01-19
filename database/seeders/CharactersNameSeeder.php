@@ -205,7 +205,7 @@ class CharactersNameSeeder extends Seeder
                 array(
                     'name' => 'Bergin "The Balck Bull" Lóngrir',
                     'gender' => 'M',
-                    'used' => 0,
+                    'used' => 1,
                     'created_by_migration' => 1,
                 ),
                 array(
